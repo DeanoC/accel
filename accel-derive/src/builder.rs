@@ -104,12 +104,10 @@ pub fn compile_tokens(func: &syn::ItemFn) -> Fallible<String> {
 
     // Build
     Command::new("cargo")
-        .args(&[&format!("+{}", NIGHTLY_VERSION), "fmt"])
         .current_dir(&dir)
         .check_run()?;
     Command::new("cargo")
         .args(&[
-            &format!("+{}", NIGHTLY_VERSION),
             "build",
             "--release",
             "--target",
